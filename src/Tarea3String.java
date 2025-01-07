@@ -1,53 +1,37 @@
 public class Tarea3String {
 
-    public boolean esCorrectoNif(String nif) {
+    public boolean validarNIF(String nif){
 
-        boolean valido = true;
+        boolean validacion = true;
 
-        if (nif.length() != 9) {
-            valido = false;
+        if (nif.length() != 9){
+            validacion = false;
         }
 
-
-        if (!digitos(nif.substring(0, 8))) {
-            valido = false;
-        }
-
-
-        if (!letra(nif)) {
-            valido = false;
-        }
-
-
-        int numero = Integer.parseInt(nif.substring(0, 8));
-        char letraCorrecta = calcularLetra(numero);
-        char letraNif = nif.charAt(8);
-
-        return letraCorrecta == letraNif && valido;
-    }
-
-
-    public boolean digitos(String cadena) {
-        boolean digito = true;
-
-        for (int i = 0; i < cadena.length(); i++) {
-            if (!Character.isDigit(cadena.charAt(i))) {
-                digito = false;
+        for (int i = 0; i < nif.length() - 1 && validacion; i++){
+            if (!Character.isDigit(nif.charAt(i))){
+                validacion = false;
             }
         }
-        return digito;
+
+        int posicion = 8;
+        char caracter = nif.charAt(posicion);
+
+        if (!Character.isLetter(caracter)){
+            validacion = false;
+        }
+
+        String letrasValidas = "TRWAGMYFPDXBNJZSQVHLCKE";
+        String num = nif.substring(0,8);
+        int numero = Integer.parseInt(num);
+        String letraUsuario = String.valueOf(nif.charAt(numero % 23));
+
+        if (!letrasValidas.equalsIgnoreCase(letraUsuario)){
+            validacion = false;
+        }
+
+        return validacion;
     }
 
 
-    public boolean letra(String nif) {
-        char caracter = nif.charAt(8);
-        return Character.isLetter(caracter);
-    }
-
-
-    public char calcularLetra(int numero) {
-        String serie = "TRWAGMYFPDXBNJZSQVHLCKE";
-        int posicion = numero % 23;
-        return serie.charAt(posicion);
-    }
 }
