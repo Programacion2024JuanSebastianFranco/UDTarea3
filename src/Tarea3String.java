@@ -8,26 +8,27 @@ public class Tarea3String {
             validacion = false;
         }
 
-        for (int i = 0; i < nif.length() - 1 && validacion; i++){
+        for (int i = 0; i < 8 && validacion; i++){
             if (!Character.isDigit(nif.charAt(i))){
                 validacion = false;
             }
         }
 
-        int posicion = 8;
-        char caracter = nif.charAt(posicion);
+        if (validacion) {
+            char caracter = nif.charAt(8);
 
-        if (!Character.isLetter(caracter)){
-            validacion = false;
-        }
+            if (!Character.isLetter(caracter)){
+                validacion = false;
+            }
 
-        String letrasValidas = "TRWAGMYFPDXBNJZSQVHLCKE";
-        String num = nif.substring(0,8);
-        int numero = Integer.parseInt(num);
-        String letraUsuario = String.valueOf(nif.charAt(numero % 23));
+            String letrasValidas = "TRWAGMYFPDXBNJZSQVHLCKE";
+            String num = nif.substring(0,8);
+            int numero = Integer.parseInt(num);
+            char letraValida = letrasValidas.charAt(numero % 23);
 
-        if (!letrasValidas.equalsIgnoreCase(letraUsuario)){
-            validacion = false;
+            if (Character.toUpperCase(caracter) != letraValida){
+                validacion = false;
+            }
         }
 
         return validacion;
