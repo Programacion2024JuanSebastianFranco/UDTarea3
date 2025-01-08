@@ -13,5 +13,31 @@ public class Prinpicipal3 {
         } else {
             System.out.println("El NIF no es válido.");
         }
+
+
+        // Sin vocales
+        System.out.println("Ingrese una cadena con vocales:");
+        String conVocales = scanner.nextLine();
+
+        String sinVocales = tarea.quitaVocales(conVocales);
+
+        System.out.println("Cadena sin vocales: " + sinVocales);
+
+
+        // Sin espacios
+        System.out.println("Ingrese una cadena con espacios:");
+        String conEspacios = scanner.nextLine();
+
+        String junto = tarea.quitaEspacios(conEspacios);
+
+        System.out.println("Cadena sin espacios: " + junto);
+
+        // Sin espacios
+        System.out.println("Ingrese una cadena:");
+        String invertir = scanner.nextLine();
+
+        String invertido = tarea.invertir(invertir);
+
+        System.out.println("Cadena invertida: " + invertido);
     }
 }

@@ -35,4 +35,55 @@ public class Tarea3String {
     }
 
 
+    public String quitaVocales(String conVocales){
+
+        String sinVocales = "";
+        String vocales = "aeiouAEIOUÁÉÍÓÚ";
+
+        for (int i = 0; i < conVocales.length(); i++){
+            char caracter = conVocales.charAt(i);
+
+            if (vocales.indexOf(caracter) == -1){
+                sinVocales += caracter;
+            }
+        }
+
+        return sinVocales;
+    }
+
+    public String quitaEspacios(String conEspacio){
+
+        String junto  = "";
+        String espacio = " ";
+        boolean huboEspacio = false;
+
+        for (int i = 0; i < conEspacio.length(); i++){
+            char caracter = conEspacio.charAt(i);
+
+            if (espacio.indexOf(caracter) == -1){
+                junto += caracter;
+                huboEspacio = false;
+            }
+            else if (!huboEspacio) {
+                junto += "*";
+                huboEspacio = true;
+            }
+        }
+
+        return junto;
+    }
+
+    public String invertir(String normal){
+
+        String invertido = "";
+
+        for (int i = normal.length() - 1; i >= 0; i--){
+            invertido += normal.charAt(i);
+        }
+
+        return invertido;
+    }
+
+
+
 }
