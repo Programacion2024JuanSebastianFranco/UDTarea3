@@ -39,5 +39,24 @@ public class Prinpicipal3 {
         String invertido = tarea.invertir(invertir);
 
         System.out.println("Cadena invertida: " + invertido);
+
+        // Repeticiones
+        System.out.println("Ingrese una frase:");
+        String frase = scanner.nextLine();
+        System.out.println("Ingrese una palabra:");
+        String palabra = scanner.nextLine();
+
+        int repeticiones = tarea.repeticiones(frase, palabra);
+        System.out.println("Numero de Repeticiones: " + repeticiones);
+
+        // Palindromo
+        System.out.println("Ingrese un palindromo:");
+        String pali = scanner.nextLine();
+
+        if (tarea.palindromo(pali)) {
+            System.out.println("Es palindromo");
+        } else {
+            System.out.println("No es palindromo");
+        }
     }
 }
