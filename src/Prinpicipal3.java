@@ -58,5 +58,12 @@ public class Prinpicipal3 {
         } else {
             System.out.println("No es palindromo");
         }
+
+        // Cifrado de Cesar
+        System.out.println("Ingrese una frase:");
+        String cifrar = scanner.nextLine();
+
+        String cifrado = tarea.cifrado(cifrar);
+        System.out.println(cifrado);
     }
 }
