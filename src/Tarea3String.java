@@ -145,9 +145,9 @@ public class Tarea3String {
         int suma = 3;
         int indiceNuevo = 0;
         String espacio = " ";
+        frase = frase.toUpperCase();
 
         for (int i = 0; i < frase.length(); i++){
-            frase = frase.toUpperCase();
             char caracter = frase.charAt(i);
             if (espacio.indexOf(caracter) != -1){
                 cifrado += caracter;
@@ -157,6 +157,38 @@ public class Tarea3String {
 
                 if (indice != -1){
                      indiceNuevo = (indice + suma) % abc.length();
+                    cifrado += abc.charAt(indiceNuevo);
+                }
+                else {
+                    System.out.println("El simbolo o letra: " + abc.charAt(indiceNuevo) + "No esta en el abecedario");
+                }
+            }
+        }
+
+        return cifrado;
+    }
+
+    public String descifrar(String frase){
+        String cifrado= "";
+        String abc = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+        int resta = 3;
+        int indiceNuevo = 0;
+        String espacio = " ";
+        frase = frase.toUpperCase();
+
+        for (int i = 0; i < frase.length(); i++){
+            char caracter = frase.charAt(i);
+            if (espacio.indexOf(caracter) != -1){
+                cifrado += caracter;
+            }
+            else {
+                int indice = abc.indexOf(caracter);
+
+                if (indice != -1) {
+                    indiceNuevo = (indice - resta) % abc.length();
+                    if (indiceNuevo < 0) {
+                        indiceNuevo += abc.length();
+                    }
                     cifrado += abc.charAt(indiceNuevo);
                 }
                 else {
