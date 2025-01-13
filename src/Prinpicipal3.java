@@ -95,6 +95,33 @@ public class Prinpicipal3 {
                     String descifrado = tarea.descifrar(descifrar);
                     System.out.println(descifrado);
                 }
+
+                case 9 -> {
+                    // Juego
+                    System.out.println("Seleccione una opcion para el juego de ahorcado:");
+                    System.out.println("1. Jugar con los intentos predeterminados (5 intentos)");
+                    System.out.println("2. Modificar el numero de intentos");
+
+                    int opcion;
+                    System.out.print("Elige: ");
+                    opcion = scan.nextInt();
+                    scan.nextLine();
+
+                    if (opcion == 1) {
+                        System.out.println("Introduzca una palabra:");
+                        String palabra = scan.nextLine();
+                        JuegoAhorcado juego = new JuegoAhorcado(palabra);
+                        juego.iniciarJuego();
+                    } else {
+                        System.out.println("Introduzca una palabra:");
+                        String palabra = scan.nextLine();
+                        System.out.print("Ingresa el número de intentos: ");
+                        int intentos = scan.nextInt();
+
+                        JuegoAhorcado juego = new JuegoAhorcado(palabra, intentos);
+                        juego.iniciarJuego();
+                        }
+                }
             }
         } while(opc != 20);
 
@@ -105,6 +132,7 @@ public class Prinpicipal3 {
         int opc;
         do {
             System.out.print("""
+                MENU
                 1. Validar Nif
                 2. Quita Vocales
                 3. Quita Espacios
@@ -113,6 +141,7 @@ public class Prinpicipal3 {
                 6. Palindromo
                 7. Cifrado de Cesar
                 8. Descifrar Cesar
+                9. Juego Ahorcado
                 """);
              opc = scan.nextInt();
         } while(opc < 1 || opc > 20);

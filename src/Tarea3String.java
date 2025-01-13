@@ -1,25 +1,32 @@
-import java.io.FileReader;
-import java.nio.channels.AsynchronousByteChannel;
-
+/**
+ * Clase Tarea3String que contiene diferentes métodos para manipular y analizar cadenas de texto.
+ */
 public class Tarea3String {
 
+    /**
+     * Valida un NIF dado.
+     *
+     * @param nif El NIF a validar.
+     * @return true si el NIF es válido, false en caso contrario.
+     */
     public boolean validarNIF(String nif) {
-
         boolean validacion = true;
 
+        // Comprobar longitud
         if (nif.length() != 9) {
             validacion = false;
         }
 
+        // Comprobar que los primeros 8 caracteres sean dígitos
         for (int i = 0; i < 8 && validacion; i++) {
             if (!Character.isDigit(nif.charAt(i))) {
                 validacion = false;
             }
         }
 
+        // Validar la letra del NIF
         if (validacion) {
             char caracter = nif.charAt(8);
-
             if (!Character.isLetter(caracter)) {
                 validacion = false;
             }
@@ -37,15 +44,18 @@ public class Tarea3String {
         return validacion;
     }
 
-
+    /**
+     * Elimina las vocales de una cadena.
+     *
+     * @param conVocales La cadena original con vocales.
+     * @return La cadena sin vocales.
+     */
     public String quitaVocales(String conVocales) {
-
         String sinVocales = "";
         String vocales = "aeiouAEIOUÁÉÍÓÚ";
 
         for (int i = 0; i < conVocales.length(); i++) {
             char caracter = conVocales.charAt(i);
-
             if (vocales.indexOf(caracter) == -1) {
                 sinVocales += caracter;
             }
@@ -54,8 +64,13 @@ public class Tarea3String {
         return sinVocales;
     }
 
+    /**
+     * Sustituye los espacios en una cadena por asteriscos.
+     *
+     * @param conEspacio La cadena original con espacios.
+     * @return La cadena con los espacios reemplazados por asteriscos.
+     */
     public String quitaEspacios(String conEspacio) {
-
         String junto = "";
         String espacio = " ";
         boolean huboEspacio = false;
@@ -75,8 +90,13 @@ public class Tarea3String {
         return junto;
     }
 
+    /**
+     * Invierte una cadena de texto.
+     *
+     * @param normal La cadena original.
+     * @return La cadena invertida.
+     */
     public String invertir(String normal) {
-
         String invertido = "";
 
         for (int i = normal.length() - 1; i >= 0; i--) {
@@ -86,9 +106,14 @@ public class Tarea3String {
         return invertido;
     }
 
-
+    /**
+     * Cuenta el número de veces que aparece una palabra en una frase.
+     *
+     * @param frase   La frase en la que buscar.
+     * @param palabra La palabra a buscar.
+     * @return El número de repeticiones de la palabra en la frase.
+     */
     public int repeticiones(String frase, String palabra) {
-
         int contador = 0;
         String similar = "";
         String espacio = " ";
@@ -112,8 +137,13 @@ public class Tarea3String {
         return contador;
     }
 
+    /**
+     * Verifica si una frase es un palíndromo.
+     *
+     * @param frase La frase a verificar.
+     * @return true si la frase es un palíndromo, false en caso contrario.
+     */
     public boolean palindromo(String frase) {
-
         boolean palindromo = false;
         String similar = "";
         String original = "";
@@ -121,7 +151,6 @@ public class Tarea3String {
 
         for (int i = 0; i < frase.length(); i++) {
             char caracter = frase.charAt(i);
-
             if (espacio.indexOf(caracter) == -1) {
                 original += caracter;
             }
@@ -138,29 +167,32 @@ public class Tarea3String {
         return palindromo;
     }
 
-
-    public String cifrado(String frase){
-        String cifrado= "";
+    /**
+     * Cifra una frase utilizando el cifrado César con un desplazamiento de 3.
+     *
+     * @param frase La frase a cifrar.
+     * @return La frase cifrada.
+     */
+    public String cifrado(String frase) {
+        String cifrado = "";
         String abc = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
         int suma = 3;
         int indiceNuevo = 0;
         String espacio = " ";
         frase = frase.toUpperCase();
 
-        for (int i = 0; i < frase.length(); i++){
+        for (int i = 0; i < frase.length(); i++) {
             char caracter = frase.charAt(i);
-            if (espacio.indexOf(caracter) != -1){
+            if (espacio.indexOf(caracter) != -1) {
                 cifrado += caracter;
-            }
-            else {
+            } else {
                 int indice = abc.indexOf(caracter);
 
-                if (indice != -1){
-                     indiceNuevo = (indice + suma) % abc.length();
+                if (indice != -1) {
+                    indiceNuevo = (indice + suma) % abc.length();
                     cifrado += abc.charAt(indiceNuevo);
-                }
-                else {
-                    System.out.println("El simbolo o letra: " + abc.charAt(indiceNuevo) + "No esta en el abecedario");
+                } else {
+                    System.out.println("El simbolo o letra: " + caracter + " no esta en el abecedario");
                 }
             }
         }
@@ -168,20 +200,25 @@ public class Tarea3String {
         return cifrado;
     }
 
-    public String descifrar(String frase){
-        String cifrado= "";
+    /**
+     * Descifra una frase cifrada con el cifrado César utilizando un desplazamiento de 3.
+     *
+     * @param frase La frase cifrada.
+     * @return La frase descifrada.
+     */
+    public String descifrar(String frase) {
+        String cifrado = "";
         String abc = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
         int resta = 3;
         int indiceNuevo = 0;
         String espacio = " ";
         frase = frase.toUpperCase();
 
-        for (int i = 0; i < frase.length(); i++){
+        for (int i = 0; i < frase.length(); i++) {
             char caracter = frase.charAt(i);
-            if (espacio.indexOf(caracter) != -1){
+            if (espacio.indexOf(caracter) != -1) {
                 cifrado += caracter;
-            }
-            else {
+            } else {
                 int indice = abc.indexOf(caracter);
 
                 if (indice != -1) {
@@ -190,16 +227,12 @@ public class Tarea3String {
                         indiceNuevo += abc.length();
                     }
                     cifrado += abc.charAt(indiceNuevo);
-                }
-                else {
-                    System.out.println("El simbolo o letra: " + abc.charAt(indiceNuevo) + "No esta en el abecedario");
+                } else {
+                    System.out.println("El simbolo o letra: " + caracter + " no esta en el abecedario");
                 }
             }
         }
 
         return cifrado;
     }
-
-
-
 }
