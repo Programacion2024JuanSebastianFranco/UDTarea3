@@ -108,14 +108,14 @@ public class Prinpicipal3 {
                     scan.nextLine();
 
                     if (opcion == 1) {
-                        System.out.println("Introduzca una palabra:");
+                        System.out.print("Introduzca una palabra: ");
                         String palabra = scan.nextLine();
                         JuegoAhorcado juego = new JuegoAhorcado(palabra);
                         juego.iniciarJuego();
                     } else {
-                        System.out.println("Introduzca una palabra:");
+                        System.out.print("Introduzca una palabra: ");
                         String palabra = scan.nextLine();
-                        System.out.print("Ingresa el número de intentos: ");
+                        System.out.print("Ingresa el numero de intentos: ");
                         int intentos = scan.nextInt();
 
                         JuegoAhorcado juego = new JuegoAhorcado(palabra, intentos);
